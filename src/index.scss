@@ -1,0 +1,48 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  // overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  height: max-content;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+:root {
+  --dark-blue: rgb(14, 51, 101);
+}
+
+button {
+  cursor: pointer;
+  border: 0px;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
