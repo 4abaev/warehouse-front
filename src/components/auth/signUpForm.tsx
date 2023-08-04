@@ -21,10 +21,6 @@ const SignUpForm = () => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        isAuth && navigate("/profile");
-    }, [isAuth, navigate]);
-
     const handleSignUp = (data: any) => {
         signUp(data)
         isAuth && navigate("/profile")

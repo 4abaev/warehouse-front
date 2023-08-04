@@ -1,16 +1,16 @@
 import { Box, Flex, Text, Link as ChakraLink, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { authRoutes } from "../../router";
-
+import styles from './index.module.scss'
 
 
 const Header: React.FC = () => {
     return (
-        <Box as="header" bg="blue.500" p={4}>
+        <Box as="header" className={styles.header} p={4}>
             <Flex alignItems="center" justifyContent="center">
                 <Flex alignItems="center">
                     {authRoutes.map((route) => (
-                        <NavLink to={route.path}>{route.title}</NavLink>
+                        <NavLink key={route.path} to={route.path}>{route.title}</NavLink>
                     ))}
                 </Flex>
             </Flex>

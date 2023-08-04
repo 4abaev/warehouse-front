@@ -1,5 +1,5 @@
 import { Box, Button, Heading, Input, InputGroup, InputRightElement, Stack } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useActions, useAppSelector } from "../../state/store";
@@ -12,10 +12,6 @@ const SignInForm = () => {
     const { isAuth } = useAppSelector((state) => state.core)
     
     const navigate = useNavigate()
-
-    useEffect(() => {
-        isAuth && navigate("/profile");
-    }, [isAuth, navigate]);
 
     const handleSignIn = (data: any) => {
         signIn(data)

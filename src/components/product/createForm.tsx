@@ -1,13 +1,11 @@
 import { Box, Button, Heading, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { FileInput } from "../../ui/FileInput";
 import { useActions } from "../../state/store";
-import { useState } from "react";
 
-const CreateProductForm = () => {
+const CreateProductForm = ({ onClose }: { onClose: any}) => {
 
-    const { 
+    const {
         handleSubmit,
         register,
         formState: { errors },
@@ -15,26 +13,19 @@ const CreateProductForm = () => {
 
     const { createProduct } = useActions()
 
-    const handleCreate = (data: any) => {
+    const handleCreate = async (data: any) => {
         const formData = new FormData()
         formData.append("description", data.description)
         formData.append("articul", data.articul)
         formData.append("category", data.category)
         formData.append("brand", data.brand)
-        formData.append("picture", data.picture)
-        formData.forEach((value, key) => {
-            console.log(key, value);
-          });
-        console.log(data);
-        
-        createProduct(data)
+        formData.append("picture", data.picture[0])
+        createProduct(formData)
     }
-
-    const navigate = useNavigate()
 
     return (
         <form onSubmit={handleSubmit(handleCreate)}>
-            <Heading>Добавление товара</Heading>
+            <Heading textAlign={"center"} marginBottom={8}>Добавление товара</Heading>
             <Stack spacing={4}>
                 <Textarea
                     placeholder='Описание'
@@ -73,7 +64,7 @@ const CreateProductForm = () => {
                 />
                 <Box display="flex" justifyContent="space-between">
                     <Button type="submit" colorScheme="blue">Добавить</Button>
-                    <Button onClick={() => navigate("/products")} colorScheme="facebook">Отмена</Button>
+                    <Button onClick={() => onClose()} colorScheme="facebook">Отмена</Button>
                 </Box>
             </Stack>
         </form>
