@@ -7,6 +7,8 @@ import { Layout } from "./components/Layout/layout";
 import { useActions, useAppSelector } from "./state/store";
 import ProfilePage from "./pages/profile";
 import { useEffect } from "react";
+import NotFoundPage from "./pages/Error";
+import ProductsPage from "./pages/common/products";
 
 const unauthRoutes: CustomRoute[] = [
   {
@@ -26,14 +28,38 @@ const unauthRoutes: CustomRoute[] = [
   },
 ];
 
-const authRoutes: CustomRoute[] = [
+export const authRoutes: CustomRoute[] = [
   {
-    title: "Авторизация",
+    title: "Профиль",
     path: "/profile",
     element: <ProfilePage />,
   },
+  {
+    title: "Товары",
+    path: "/products",
+    element: <ProductsPage />,
+  },
+  {
+    title: "Заказы Склада",
+    path: "/warehouse-orders",
+    element: <ProductsPage />,
+  },
+  {
+    title: "Заказы",
+    path: "/orders",
+    element: <ProductsPage />,
+  },
+  {
+    title: "Торговля",
+    path: "/trade",
+    element: <ProductsPage />,
+  },
+  {
+    title: "Финансы",
+    path: "/finances",
+    element: <ProductsPage />,
+  },
 ];
-
 
 export function AppRouter() {
   const { user, isAuth } = useAppSelector((state) => state.core)
@@ -57,7 +83,7 @@ export function AppRouter() {
             ))}
           </>
         )}
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
       {/*Вход и регистрация (без общего layout)*/}
       <Route path="/auth" element={<AuthLayout />}>

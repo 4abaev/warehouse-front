@@ -7,17 +7,17 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import * as coreActions from './core/actions'
 import * as usersActions from './users/actions'
 import * as ordersActions from './orders/actions'
-import * as costsActions from './costs/actions'
+import * as productsActions from './products/actions'
 import { coreSlice } from "./core/slice";
 import { usersSlice } from "./users/slice";
 import { ordersSlice } from "./orders/slice";
-import { costsSlice } from "./costs/slice";
+import { productsSlice } from "./products/slice";
 
 export const combineActions = {
   ...coreActions,
   ...usersActions,
   ...ordersActions,
-  ...costsActions
+  ...productsActions
 };
 
 export const store = configureStore({
@@ -25,7 +25,7 @@ export const store = configureStore({
     core: coreSlice.reducer,
     users: usersSlice.reducer,
     orders: ordersSlice.reducer,
-    costs: costsSlice.reducer,
+    products: productsSlice.reducer,
   }),
 });
 

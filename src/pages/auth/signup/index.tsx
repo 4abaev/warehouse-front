@@ -9,7 +9,6 @@ const SignUpPage = () => {
         if(!users) {
             getUsers()
         }
-        console.log(users);
     }, [getUsers, users])
     return (
         <div>

@@ -1,0 +1,35 @@
+.input_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    margin-bottom: 25px;
+
+    .upload {
+        margin-top: 6px;
+        font-size: 16px;
+        color: var(--dark-blue);
+        cursor: pointer;
+        background-color: transparent;
+        border: var(--dark-blue) 2px solid;
+        padding: 6px 12px 6px 12px;
+        border-radius: 6px;
+        transition: 0.25s;
+        text-align: center;
+        &:hover {
+            color: #ffff;
+            background-color: var(--dark-blue);
+        }
+    }
+
+    input {
+        display: none;
+    }
+
+    .error_msg {
+        position: absolute;
+        bottom: 0px;
+        font-size: 14px;
+        color: red;
+    }
+}
