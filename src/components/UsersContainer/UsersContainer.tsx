@@ -18,6 +18,7 @@ const UserContainer = ({ users }: { users: IUser[] }) => {
 
     const managerSignIn = (data: any) => {
         signIn(data)
+        isAuth && navigate("/profile");
     }
 
     return (
