@@ -39,6 +39,8 @@ export const productsSlice = createSlice({
       })
       .addCase(costsActions.getProducts.fulfilled, (state: ProductsState, action) => {
         state.products = action.payload;
+        console.log(state.products);
+        
         state.isSuccess = true;
         state.isError = false;
         state.isLoading = false;

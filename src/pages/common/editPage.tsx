@@ -1,6 +1,6 @@
 import { Box, Button, Container, Editable, EditableInput, EditablePreview, EditableTextarea, Heading, Stack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { FileInput, FileInputControl } from "../../ui/FileInput";
+import { FileInputControl } from "../../ui/FileInput";
 import { useActions, useAppDispatch, useAppSelector } from "../../state/store";
 import styles from './index.module.scss'
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ const EditProductPage = () => {
         register,
         formState: { errors },
     } = useForm({ mode: "onChange" })
+
     const { currentProduct, isSuccess } = useAppSelector((state) => state.products)
     const { updateProduct, } = useActions()
     const navigate = useNavigate()
@@ -46,9 +47,9 @@ const EditProductPage = () => {
     
     return (
         <Container display={"flex"} justifyContent={"center"} gap={150}  maxW='5xl'>
-            <Box className={styles.image2Container} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+            {/* <Box className={styles.image2Container} display={"flex"} alignItems={"center"} justifyContent={"center"}>
                 <img className={styles.image2} src={selectedFile ? URL.createObjectURL(selectedFile) : `${process.env.REACT_APP_DOMAIN}/${currentProduct?.picture}`} alt="product" />
-            </Box>
+            </Box> */}
             <form onSubmit={handleSubmit(handleSave)} >
                 <Heading textAlign={"center"} marginBottom={8}>Добавление товара</Heading>
                 <Stack spacing={4}>

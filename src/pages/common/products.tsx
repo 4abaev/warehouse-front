@@ -10,7 +10,7 @@ import styles from './index.module.scss'
 const ProductsPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { getProducts, deleteProduct } = useActions()
-    const { products } = useAppSelector((state) => state.products)
+    const { products, isSuccess } = useAppSelector((state) => state.products)
     const [searchQuery, setSearchQuery] = useState("");
     const [inputValue, setinputValue] = useState("");
 
@@ -29,10 +29,8 @@ const ProductsPage = () => {
     }
 
     useEffect(() => {
-        if (!products.length) {
-            getProducts()
-        }
-    }, [getProducts, products])
+        !products.length && !isSuccess && getProducts()
+    }, [getProducts, products, isSuccess])
 
     const handleDelete = async (product: Product) => {
         deleteProduct({ id: product.id })
