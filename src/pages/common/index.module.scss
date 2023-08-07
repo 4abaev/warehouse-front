@@ -1,0 +1,23 @@
+.input {  border: 1px solid #e2e8f0;
+  width: 100%;
+  padding-left: 15px;
+}
+.image {
+  max-width: 75px;
+  max-height: 75px;
+}
+.imageContainer {
+  max-width: 75px;
+  min-width: 75px;
+  max-height: 75px;
+  min-height: 75px;
+}
+.image2 {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.image2Container {
+    min-width: 50%;
+    min-height: 100%;
+}

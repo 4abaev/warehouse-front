@@ -1,5 +1,6 @@
 type ProductsState = {
   products: Product[];
+  currentProduct: Product | null;
   isSuccess: boolean;
   isLoading: boolean;
   isError: boolean;

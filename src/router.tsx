@@ -9,6 +9,7 @@ import ProfilePage from "./pages/profile";
 import { useEffect } from "react";
 import NotFoundPage from "./pages/Error";
 import ProductsPage from "./pages/common/products";
+import EditProductPage from "./pages/common/editPage";
 
 const unauthRoutes: CustomRoute[] = [
   {
@@ -81,6 +82,10 @@ export function AppRouter() {
                 element={route.element}
               />
             ))}
+            <Route
+              path={"/products/edit"}
+              element={<EditProductPage />}
+            />
           </>
         )}
         <Route path="*" element={<NotFoundPage />} />

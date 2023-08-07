@@ -65,7 +65,6 @@ export const coreSlice = createSlice({
       })
       .addCase(coreActions.getMe.fulfilled, (state: CoreState, action) => {
         state.user = action.payload;
-        console.log(action.payload);
         state.isSuccess = true;
         state.isLoading = false;
         state.isError = false;
