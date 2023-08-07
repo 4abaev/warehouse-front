@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as userActions from "./actions";
-
+import * as coreActions from "../core/actions";
+import { CoreState } from "../core/type";
 const initialState: UsersState = {
   users: [],
   isSuccess: false,
@@ -34,6 +35,22 @@ export const usersSlice = createSlice({
         state.isSuccess = true;
       })
       .addCase(userActions.getUsers.rejected, (state: UsersState) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.isSuccess = false;
+      })
+      .addCase(coreActions.signUp.pending, (state: UsersState) => {
+        state.isError = false;
+        state.isSuccess = false;
+        state.isLoading = true;
+      })
+      .addCase(coreActions.signUp.fulfilled, (state: UsersState, action) => {
+        state.users.push(action.payload)
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(coreActions.signUp.rejected, (state: UsersState) => {
         state.isError = true;
         state.isLoading = false;
         state.isSuccess = false;

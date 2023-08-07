@@ -1,4 +1,4 @@
-import { Editable, EditableInput, EditablePreview, EditableTextarea, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Editable, EditableInput, EditablePreview, EditableTextarea, Heading, Stack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { FileInput } from "../../ui/FileInput";
 import { useActions } from "../../state/store";
@@ -14,7 +14,7 @@ const EditProductForm = ({ product }: { product: Product }) => {
 
     const { createProduct } = useActions()
 
-    const handleCreate = async (data: any) => {
+    const handleSave = async (data: any) => {
         const formData = new FormData()
         formData.append("description", data.description)
         formData.append("articul", data.articul)
@@ -25,41 +25,41 @@ const EditProductForm = ({ product }: { product: Product }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit(handleCreate)} >
+        <form onSubmit={handleSubmit(handleSave)} >
             <Heading textAlign={"center"} marginBottom={8}>Добавление товара</Heading>
             <Stack spacing={4}>
                 <label>Описание</label>
                 <Editable defaultValue={product.description} >
-                    <EditablePreview className={styles.input}/>
+                    <EditablePreview className={styles.input} />
                     <EditableTextarea
-                    className={styles.input}
+                        className={styles.input}
                         autoComplete="false"
                         {...register("description")}
                     />
                 </Editable>
                 <label>Артикул</label>
                 <Editable defaultValue={product.articul} >
-                    <EditablePreview className={styles.input}/>
+                    <EditablePreview className={styles.input} />
                     <EditableInput
-                    className={styles.input}
+                        className={styles.input}
                         autoComplete="false"
                         {...register("articul")}
                     />
                 </Editable>
                 <label>Категория</label>
                 <Editable defaultValue={product.category} >
-                    <EditablePreview className={styles.input}/>
+                    <EditablePreview className={styles.input} />
                     <EditableInput
-                    className={styles.input}
+                        className={styles.input}
                         autoComplete="false"
                         {...register("category")}
                     />
                 </Editable>
                 <label>Бренд</label>
                 <Editable defaultValue={product.brand} >
-                    <EditablePreview className={styles.input}/>
+                    <EditablePreview className={styles.input} />
                     <EditableInput
-                    className={styles.input}
+                        className={styles.input}
                         autoComplete="false"
                         {...register("brand")}
                     />
@@ -73,8 +73,8 @@ const EditProductForm = ({ product }: { product: Product }) => {
                     type="file"
                     register={register("picture")}
                 />
-                
             </Stack>
+
         </form>
     );
 }

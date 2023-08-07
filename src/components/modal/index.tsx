@@ -20,7 +20,10 @@ export const CustomEditModal = ({ children }: { children: ReactNode }) => {
                 <ModalContent p={4}>
                     <ModalBody>
                         {children}
-
+                        <Box display="flex" justifyContent="space-between">
+                            <Button type="submit" colorScheme="blue">Сохранить</Button>
+                            <Button onClick={() => onClose()} colorScheme="facebook">Отмена</Button>
+                        </Box>
                     </ModalBody>
                 </ModalContent>
             </Modal>
@@ -28,6 +31,7 @@ export const CustomEditModal = ({ children }: { children: ReactNode }) => {
     );
 }
 export const CustomDeleteModal = ({ children }: { children: ReactNode }) => {
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
@@ -45,9 +49,9 @@ export const CustomDeleteModal = ({ children }: { children: ReactNode }) => {
                     <ModalBody>
                         {children}
                         <Box display="flex" justifyContent="space-between" marginTop={5}>
-                        <Button type="submit" colorScheme="blue">Сохранить</Button>
-                        <Button onClick={() => onClose()} colorScheme="facebook">Отмена</Button>
-                    </Box>
+                            <Button type="submit" colorScheme="blue">Сохранить</Button>
+                            <Button onClick={() => onClose()} colorScheme="facebook">Отмена</Button>
+                        </Box>
                     </ModalBody>
                 </ModalContent>
             </Modal>

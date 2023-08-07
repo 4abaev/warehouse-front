@@ -10,19 +10,27 @@ import { CustomEditModal } from "../../components/modal";
 const ProductsPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { getProducts } = useActions()
-    
     const { products } = useAppSelector((state) => state.products)
+    // const [array, setArray] = useState(products);
+
+    // function combinedSearch(keyword) {
+    //     products.filter(product =>
+    //       product.articul.toLowerCase().includes(keyword.toLowerCase()) ||
+    //       product.description.toLowerCase().includes(keyword.toLowerCase())
+    //     );
+    //     return products;
+    //   }
 
     useEffect(() => {
         if (!products.length) {
             getProducts()
         }
     }, [getProducts, products])
-
+//timed out fetching a new connection from the connection pool 10/9.
     return (
         <>
             <Box display={"flex"} gap={5} alignItems={"center"} w={1000} justifyContent={"center"}>
-                <Button colorScheme="facebook" onClick={onOpen} size={"md"} >Добавить</Button>
+                <Button colorScheme="facebook" onClick={onOpen} size={"md"}>Добавить</Button>
                 <InputGroup w={500} size={"lg"} display={"flex"} alignItems={"center"} justifyContent={"space-between"} >
                     <Input placeholder='Введите артикул или название' size={"lg"} />
                     <InputRightElement >
