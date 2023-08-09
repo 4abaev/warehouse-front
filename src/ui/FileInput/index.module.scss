@@ -21,6 +21,25 @@
             background-color: var(--dark-blue);
         }
     }
+    
+    .upload2 { 
+        margin-top: 6px;
+        font-size: 24px;
+        color: var(--dark-blue);
+        cursor: pointer;
+        background-color: transparent;
+        border: var(--dark-blue) 2px dashed;
+        padding: 6px 12px 6px 12px;
+        border-radius: 6px;
+        transition: 0.25s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            color: #ffff;
+            background-color: var(--dark-blue);
+        }
+    }
 
     input {
         display: none;

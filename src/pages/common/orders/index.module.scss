@@ -1,0 +1,35 @@
+.input {
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  padding-left: 15px;
+}
+.image {
+  max-width: 75px;
+  max-height: 75px;
+}
+.imageContainer {
+  min-width: 75px;
+  max-height: 150px;
+  min-height: 75px;
+  display: flex;
+  justify-content: center;
+}
+.image2 {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.image2Container {
+  min-width: 50%;
+  min-height: 100%;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-blue);
+  border: 3px solid var(--dark-blue);
+  border-radius: 10px;
+  font-weight: 400;
+}

@@ -1,18 +1,18 @@
 type OrdersState = {
   orders: Order[];
-  isSucces: boolean;
+  isOrderSucces: boolean;
   isError: boolean;
   isLoading: boolean;
 };
 
 type Order = {
   id: string;
-  text: string;
+  comment: string;
   totalCost: number;
-  addressId: string;
-  owner: User;
-  condition: string;
-  createdAt: string;
+  products: string;
+  status: string;
+  flag: string
+  createdAt: string
 };
 
 type OrderCreateForm = {

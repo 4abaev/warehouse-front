@@ -8,8 +8,9 @@ import { useActions, useAppSelector } from "./state/store";
 import ProfilePage from "./pages/profile";
 import { useEffect } from "react";
 import NotFoundPage from "./pages/Error";
-import ProductsPage from "./pages/common/products";
-import EditProductPage from "./pages/common/editPage";
+import ProductsPage from "./pages/common/products/products";
+import EditProductPage from "./pages/common/products/editPage";
+import OrdersPage from "./pages/common/orders/orders";
 
 const unauthRoutes: CustomRoute[] = [
   {
@@ -43,17 +44,17 @@ export const authRoutes: CustomRoute[] = [
   {
     title: "Заказы Склада",
     path: "/warehouse-orders",
-    element: <ProductsPage />,
+    element: <OrdersPage />,
   },
   {
     title: "Заказы",
     path: "/orders",
-    element: <ProductsPage />,
+    element: <OrdersPage />,
   },
   {
     title: "Торговля",
     path: "/trade",
-    element: <ProductsPage />,
+    element: <OrdersPage />,
   },
   {
     title: "Финансы",

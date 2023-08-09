@@ -1,20 +1,22 @@
 import { Box, Button, Container, Editable, EditableInput, EditablePreview, EditableTextarea, Heading, Stack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { FileInputControl } from "../../ui/FileInput";
-import { useActions, useAppDispatch, useAppSelector } from "../../state/store";
+import { FileInput } from "../../../ui/FileInput";
+import { useActions, useAppDispatch, useAppSelector } from "../../../state/store";
 import styles from './index.module.scss'
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { setSuccesFalse } from "../../state/products/slice";
+import { useCallback, useEffect, useState } from "react";
+import { setSuccesFalse } from "../../../state/products/slice";
 
 const EditProductPage = () => {
 
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const onDrop = useCallback((acceptedFiles: Array<File>) => {
 
-    function fileChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
-        const file = event.target.files?.[0] || null;
-        setSelectedFile(file);
-    }
+        setSelectedFile(acceptedFiles[0]);
+        console.log(acceptedFiles[0]);
+        
+    }, [])
+
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const {
         handleSubmit,
@@ -44,14 +46,14 @@ const EditProductPage = () => {
         isSuccess && navigate("/products")
         dispatch(setSuccesFalse())
     }
-    
+
     return (
-        <Container display={"flex"} justifyContent={"center"} gap={150}  maxW='5xl'>
-            {/* <Box className={styles.image2Container} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+        <Container display={"flex"} justifyContent={"center"} gap={150} maxW='5xl'>
+            <Box className={styles.image2Container} display={"flex"} alignItems={"center"} justifyContent={"center"}>
                 <img className={styles.image2} src={selectedFile ? URL.createObjectURL(selectedFile) : `${process.env.REACT_APP_DOMAIN}/${currentProduct?.picture}`} alt="product" />
-            </Box> */}
+            </Box>
             <form onSubmit={handleSubmit(handleSave)} >
-                <Heading textAlign={"center"} marginBottom={8}>Добавление товара</Heading>
+                <Heading textAlign={"center"} marginBottom={8}>Изменение товара</Heading>
                 <Stack spacing={4}>
                     <label>Описание</label>
                     <Editable defaultValue={currentProduct?.description} >
@@ -90,15 +92,12 @@ const EditProductPage = () => {
                         />
                     </Editable>
 
-                    <FileInputControl
+                    <FileInput
                         name="picture"
-                        label="Изменить изображение"
-                        accept="image/*"
+                        label="Изображение"
                         errors={errors}
-                        type="file"
-                        register={register("picture")}
-                        fileChangeHandler={fileChangeHandler}
                         selectedFile={selectedFile}
+                        setSelectedFile={setSelectedFile}
                     />
                 </Stack>
                 <Box display="flex" marginTop={5} justifyContent="space-between">

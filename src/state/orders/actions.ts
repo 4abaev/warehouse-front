@@ -7,11 +7,14 @@ export const getOrders = createAsyncThunk(
   "orders/getAll",
   async (_, thunkAPI) => {
     try {
-      api.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${localStorage.getItem("token")}`;
       const orders = (await api.get("/orders")).data;
-      return thunkAPI.fulfillWithValue(orders);
+
+      const normalizedOrders = orders.map((order: Order) => ({
+        ...order,
+        products: JSON.parse(order.products)
+      }));
+      
+      return thunkAPI.fulfillWithValue(normalizedOrders);
     } catch (error) {
       const { message } = ((error as AxiosError).response?.data as Error);
       toast.error(message);

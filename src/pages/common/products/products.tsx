@@ -1,10 +1,10 @@
 import { Box, Button, IconButton, Input, InputGroup, InputRightElement, Modal, ModalContent, ModalOverlay, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr, useDisclosure } from "@chakra-ui/react";
-import CreateProductForm from "../../components/product/createForm";
-import { useActions, useAppDispatch, useAppSelector } from "../../state/store";
+import CreateProductForm from "../../../components/product/createForm";
+import { useActions, useAppDispatch, useAppSelector } from "../../../state/store";
 import { DeleteIcon, EditIcon, SearchIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setCurrent } from "../../state/products/slice";
+import { setCurrent } from "../../../state/products/slice";
 import styles from './index.module.scss'
 
 const ProductsPage = () => {

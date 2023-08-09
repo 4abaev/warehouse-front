@@ -3,7 +3,7 @@ import { usersSlice } from "../users/slice";
 const initialState: OrdersState = {
   orders: [],
   isError: false,
-  isSucces: false,
+  isOrderSucces: false,
   isLoading: false,
 };
 
@@ -14,7 +14,7 @@ export const ordersSlice = createSlice({
     clearState(state) {
       state.orders = [];
       state.isError = false;
-      state.isSucces = false;
+      state.isOrderSucces = false;
       state.isLoading = false;
       return state;
     },
@@ -23,7 +23,7 @@ export const ordersSlice = createSlice({
     builder
       .addCase(ordersActions.getOrders.pending, (state: OrdersState) => {
         state.isError = false;
-        state.isSucces = false;
+        state.isOrderSucces = false;
         state.isLoading = true;
       })
       .addCase(
@@ -31,18 +31,18 @@ export const ordersSlice = createSlice({
         (state: OrdersState, action) => {
           state.orders = action.payload;
           state.isError = false;
-          state.isSucces = true;
+          state.isOrderSucces = true;
           state.isLoading = false;
         }
       )
       .addCase(ordersActions.getOrders.rejected, (state: OrdersState) => {
         state.isError = false;
-        state.isSucces = false;
+        state.isOrderSucces = false;
         state.isLoading = true;
       })
       .addCase(ordersActions.createOrder.pending, (state: OrdersState) => {
         state.isError = false;
-        state.isSucces = false;
+        state.isOrderSucces = false;
         state.isLoading = true;
       })
       .addCase(
@@ -50,13 +50,13 @@ export const ordersSlice = createSlice({
         (state: OrdersState, action) => {
           state.orders.push(action.payload);
           state.isError = false;
-          state.isSucces = true;
+          state.isOrderSucces = true;
           state.isLoading = false;
         }
       )
       .addCase(ordersActions.createOrder.rejected, (state: OrdersState) => {
         state.isError = false;
-        state.isSucces = false;
+        state.isOrderSucces = false;
         state.isLoading = true;
       });
   },

@@ -2,6 +2,7 @@ import { Box, Button, Heading, Input, Stack, Textarea } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { FileInput } from "../../ui/FileInput";
 import { useActions } from "../../state/store";
+import { useState } from "react";
 
 const CreateProductForm = ({ onClose }: { onClose: any}) => {
 
@@ -13,14 +14,17 @@ const CreateProductForm = ({ onClose }: { onClose: any}) => {
 
     const { createProduct } = useActions()
 
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
     const handleCreate = async (data: any) => {
         const formData = new FormData()
         formData.append("description", data.description)
         formData.append("articul", data.articul)
         formData.append("category", data.category)
         formData.append("brand", data.brand)
-        formData.append("picture", data.picture[0])
-        createProduct(formData)
+        selectedFile && formData.append("picture", selectedFile)
+        
+        createProduct(formData) 
     }
 
     return (
@@ -57,10 +61,9 @@ const CreateProductForm = ({ onClose }: { onClose: any}) => {
                 <FileInput
                     name="picture"
                     label="Изображение"
-                    accept="image/*"
                     errors={errors}
-                    type="file"
-                    register={register("picture")}
+                    selectedFile={selectedFile}
+                    setSelectedFile={setSelectedFile}
                 />
                 <Box display="flex" justifyContent="space-between">
                     <Button type="submit" colorScheme="blue">Добавить</Button>
