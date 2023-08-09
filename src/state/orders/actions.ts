@@ -9,7 +9,7 @@ export const getOrders = createAsyncThunk(
     try {
       const orders = (await api.get("/orders")).data;
 
-      const normalizedOrders = orders.map((order: Order) => ({
+      const normalizedOrders = orders.map((order: any) => ({
         ...order,
         products: JSON.parse(order.products)
       }));

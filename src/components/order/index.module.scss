@@ -1,11 +1,14 @@
 .box {
-  border: 2px solid var(--dark-blue);
+  border: 3px solid var(--dark-blue);
+  margin-top: 25px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  min-width: 500px;
 }
 
 .boxHeader {
@@ -14,4 +17,37 @@
   flex-direction: column;
   justify-content: center;
   color: white;
+}
+
+.image {
+  max-width: 50px;
+  max-height: 75px;
+  padding: 5px 0px;
+}
+
+.deleteButton {
+  color: red;
+  font-size: 25px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.grid {
+  display: grid;
+  padding: 0 5px;
+  grid-template-columns: 50px 50px 50px 150px 50px;
+}
+
+.grid div {
+  padding: 0 5px;
+  border: 0.5px solid gray;
+  display: grid;
+  align-items: center;
+  font-size: 12px;
+  max-height: 100px;
+}
+
+.grid div:first-of-type {
+  justify-content: center;
 }

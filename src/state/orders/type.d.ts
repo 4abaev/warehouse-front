@@ -9,10 +9,21 @@ type Order = {
   id: string;
   comment: string;
   totalCost: number;
-  products: string;
+  products: OrderProduct[];
   status: string;
-  flag: string
-  createdAt: string
+  flag: string;
+  createdAt: string;
+};
+
+type OrderProduct = {
+  id: string;
+  quantity: string;
+  cost: number;
+  articul: string;
+  description: string;
+  brand: string;
+  category: string;
+  picture: string;
 };
 
 type OrderCreateForm = {

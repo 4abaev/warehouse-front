@@ -41,7 +41,7 @@ const EditProductPage = () => {
         formData.append("articul", data.articul)
         formData.append("category", data.category)
         formData.append("brand", data.brand)
-        formData.append("picture", data.picture[0])
+        selectedFile && formData.append("picture", selectedFile)
         updateProduct({ formData, id: currentProduct?.id })
         isSuccess && navigate("/products")
         dispatch(setSuccesFalse())

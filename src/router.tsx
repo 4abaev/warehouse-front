@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import NotFoundPage from "./pages/Error";
 import ProductsPage from "./pages/common/products/products";
 import EditProductPage from "./pages/common/products/editPage";
-import OrdersPage from "./pages/common/orders/orders";
 
 const unauthRoutes: CustomRoute[] = [
   {
@@ -40,27 +39,7 @@ export const authRoutes: CustomRoute[] = [
     title: "Товары",
     path: "/products",
     element: <ProductsPage />,
-  },
-  {
-    title: "Заказы Склада",
-    path: "/warehouse-orders",
-    element: <OrdersPage />,
-  },
-  {
-    title: "Заказы",
-    path: "/orders",
-    element: <OrdersPage />,
-  },
-  {
-    title: "Торговля",
-    path: "/trade",
-    element: <OrdersPage />,
-  },
-  {
-    title: "Финансы",
-    path: "/finances",
-    element: <ProductsPage />,
-  },
+  }
 ];
 
 export function AppRouter() {
